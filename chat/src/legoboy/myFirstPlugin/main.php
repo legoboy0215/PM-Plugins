@@ -17,6 +17,7 @@ class Main extends PluginBase{
 
         public function onEnable(){
                 $this->getLogger()->info("onEnable() has been called!");
+		$this->saveDefaultConfig();
         }
 
         public function onDisable(){
@@ -26,15 +27,15 @@ class Main extends PluginBase{
             switch($cmd->getName()){
                 case "hey":
                    //What you want, like:
-                   $sender->sendMessage("Hey!");
+                   $sender->sendMessage("- " . $this->getConfig()->get("hey"));
                    return true;
                 case "bye":
                    //What you want, like:
-                   $sender->sendMessage("Bye!");
+                   $sender->sendMessage("- " . $this->getConfig()->get("bye"));
                    return true;
                 case "hello":
                    //What you want, like:
-                   $sender->sendMessage("Hello again!");
+                   $sender->sendMessage("- " . $this->getConfig()->get("hello"));
                    return true;
             }
 }
