@@ -1,0 +1,17 @@
+name: Plugin
+description: Allows users to view all rules with /rules
+author: Legoboy
+main: legoboy\myFirstPlugin\Main
+load: POSTWORLD
+version: 1.0.0
+api: [1.8.0]
+commands:
+    hey:
+        usage: /hey
+        description: Says hey.
+    bye:
+        usage: /bye
+        description: Says bye.
+    hello:
+        usage: /hello
+        description: Says hello.
