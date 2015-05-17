@@ -1,0 +1,11 @@
+name: IsOpOrNot
+description: Allows users to view op status.
+author: Legoboy
+main: legoboy\isopornot\Main
+load: POSTWORLD
+version: 1.0.0
+api: [1.11.0]
+commands:
+    isop:
+        usage: /isop
+        description: Shows op status.
