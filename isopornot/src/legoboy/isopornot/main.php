@@ -8,6 +8,7 @@ use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\command\CommandSender;
 use pocketmine\command\Command;
 use pocketmine\command\CommandExecutor;
+use pocketmine\utils\TextFormat;
 
 class Main extends PluginBase{
 
@@ -25,7 +26,7 @@ class Main extends PluginBase{
 		public function onCommand(CommandSender $sender, Command $cmd, $label, array $args) {
             switch($cmd->getName()){
                 case "isop":
-                   $sender->sendMessage("You ".($sender->isOp() ? "are" : "are not")." op!");
+                   $sender->sendMessage("[LegoCraft] " .TextFormat::GREEN . "You ".($sender->isOp() ? "are" : "are not")." op!");
                    return true;
             }
 }
