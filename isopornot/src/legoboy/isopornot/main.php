@@ -26,7 +26,7 @@ class Main extends PluginBase{
 		public function onCommand(CommandSender $sender, Command $cmd, $label, array $args) {
             switch($cmd->getName()){
                 case "isop":
-                   $sender->sendMessage("[LegoCraft] " .TextFormat::GREEN . "You ".($sender->isOp() ? "are" : "are not")." op!");
+                   $sender->sendMessage("[Server] " .TextFormat::GREEN . "You ".($sender->isOp() ? "are" : "are not")." op!");
                    return true;
             }
 }
