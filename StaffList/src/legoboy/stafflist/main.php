@@ -1,14 +1,13 @@
 <?php
 
-namespace legoboy\stafflist;
+namespace legoboy\isopornot;
 
 use pocketmine\plugin\PluginBase;
-use pocketmine\event\Listener;
+use pocketmine\Player;
 use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\command\CommandSender;
 use pocketmine\command\Command;
-use pocketmine\Player;
-use pocketmine\utils\Config;
+use pocketmine\command\CommandExecutor;
 use pocketmine\utils\TextFormat;
 
 class Main extends PluginBase{
@@ -19,7 +18,6 @@ class Main extends PluginBase{
 
         public function onEnable(){
                 $this->getLogger()->info("onEnable() has been called!");
-		$this->saveDefaultConfig();
         }
 
         public function onDisable(){
@@ -27,19 +25,9 @@ class Main extends PluginBase{
         }
 		public function onCommand(CommandSender $sender, Command $cmd, $label, array $args) {
             switch($cmd->getName()){
-                case "owner":
-                   //What you want, like:
-                   $sender->sendMessage(TextFormat::RED . $this->getConfig()->get("owner"));
-                   return true;
-                case "admin":
-                   //What you want, like:
-                   $sender->sendMessage(TextFormat::GREEN . $this->getConfig()->get("admin"));
-                   return true;
-                case "builder":
-                   //What you want, like:
-                   $sender->sendMessage(TextFormat::BLUE . $this->getConfig()->get("builder"));
+                case "isop":
+                   $sender->sendMessage("[Server] " .TextFormat::GREEN . "You ".($sender->isOp() ? "are" : "are not")." op!");
                    return true;
             }
 }
 }
-?>
