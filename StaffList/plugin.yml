@@ -1,0 +1,17 @@
+name: StaffList
+description: Lists all server staff.
+author: Legoboy
+main: legoboy\stafflist\main
+load: POSTWORLD
+version: 1.0.0
+api: [1.11.0]
+commands:
+    owner:
+        usage: /owner
+        description: Lists all owners.
+    admin:
+        usage: /admin
+        description: Lists all admins.
+    builder:
+        usage: /builder
+        description: Lists all builders.
