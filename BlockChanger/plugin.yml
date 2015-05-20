@@ -1,0 +1,5 @@
+name: BlockChanger
+version: 1.1.0
+api: 1.11.0
+main: legoboy\blockchanger\Main
+author: legoboy
