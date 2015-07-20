@@ -39,11 +39,11 @@ class Main extends PluginBase implements Listener{
 								}
 								if($this->getConfig()->get("Action") === "Deop"){
 								$this->getServer()->getPlayer($name)->setOp(false);
-								$this->getServer()->getPlayer($name)->sendMessage(TextFormat::DARK_RED . "[LegoCraft] Admin Warning: " . $msg);
+								$this->getServer()->getPlayer($name)->sendMessage(TextFormat::DARK_RED . "Admin Warning: " . $msg);
 								}
 								return true;
 							}elseif($this->getServer()->getPlayer($name)->isOnline()){
-		                    $this->getServer()->getPlayer($name)->sendMessage(TextFormat::DARK_RED . "[LegoCraft] Admin Warning: " . $msg);
+		                    $this->getServer()->getPlayer($name)->sendMessage(TextFormat::DARK_RED . "Admin Warning: " . $msg);
 							$this->warnedplayers->set($name);
 							return true;
 						}
