@@ -1,0 +1,22 @@
+name: PlayerWarn
+description: Warn a player if they do something wrong...
+author: Legoboy
+main: Legoboy\PlayerWarn\Main
+version: 1.0.0
+api: [1.12.0]
+commands:
+    pw:
+        usage: /pw [player] [message]
+        description: Warns a player.
+        permission: pw.warn
+    forgive:
+        usage: /forgive [player]
+        description: Forgive a player.
+        permission: pw.forgive
+permissions:
+    pw.warn:
+        default: op
+        description: Allows user to use /pw
+    pw.forgive:
+        default: op
+        description: Allows user to use /forgive
