@@ -31,7 +31,16 @@ class Main extends PluginBase implements Listener{
 							$name = strtolower(array_shift($args));
 							$msg = implode(' ', $args);
 						    if($this->warnedplayers->exists($name)){
+							    if($this->getConfig()->get("Action") === "Kick"){
 							    $this->getServer()->getPlayer($name)->kick($msg, false);
+								}
+								if($this->getConfig()->get("Action") === "Ban"){
+								$this->getServer()->getPlayer($name)->setBanned(true);
+								}
+								if($this->getConfig()->get("Action") === "Deop"){
+								$this->getServer()->getPlayer($name)->setOp(false);
+								$this->getServer()->getPlayer($name)->sendMessage(TextFormat::DARK_RED . "[LegoCraft] Admin Warning: " . $msg);
+								}
 								return true;
 							}elseif($this->getServer()->getPlayer($name)->isOnline()){
 		                    $this->getServer()->getPlayer($name)->sendMessage(TextFormat::DARK_RED . "[LegoCraft] Admin Warning: " . $msg);
@@ -49,15 +58,17 @@ class Main extends PluginBase implements Listener{
                 }
                 case "forgive":
                     if($sender->hasPermission("pw.forgive")){
-                        if($this->warnedplayers->exists($args[0])){
-                            $this->warnedplayers->remove($args[0]);
-                            $sender->sendMessage(TextFormat::BLUE . $args[0] . " has been forgiven.");
+					    if(isset($args[0])){
+                            if($this->warnedplayers->exists($args[0])){
+                                $this->warnedplayers->remove($args[0]);
+                                $sender->sendMessage(TextFormat::BLUE . $args[0] . " has been forgiven.");
+                            }else{
+						    $sender->sendMessage(TextFormat::RED . "Player has not been warned before.");
+						    }
+							}
                         }else{
-						$sender->sendMessage(TextFormat::RED . "Player has not been warned before.");
-						}
-                    }else{
-                        $sender->sendMessage(TextFormat::RED . "You do not have permission to execute this command.");
-                    }						
+                            $sender->sendMessage(TextFormat::RED . "You do not have permission to execute this command.");
+                        }						
             }
         }
 	
