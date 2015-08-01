@@ -29,21 +29,27 @@ class Main extends PluginBase implements Listener{
 						}elseif($this->getServer()->getPlayer($args[0]) instanceof Player and $this->getServer()->getPlayer($args[0])->isOnline()){
 						    if($args[1] !== null){
 							$name = strtolower(array_shift($args));
+							$player = $this->getServer()->getPlayer($name);
 							$msg = implode(' ', $args);
 						    if($this->warnedplayers->exists($name)){
-							    if($this->getConfig()->get("Action") === "Kick"){
-							    $this->getServer()->getPlayer($name)->kick($msg, false);
+							    $action = strtolower($this->getConfig()->get("Action"));
+							    if($action === "kick"){
+							    $player->kick($msg, false);
+								$sender->sendMessage(TextFormat::DARK_GREEN . "[LegoCraft] " . $player->getName() . " was kicked.");
 								}
-								if($this->getConfig()->get("Action") === "Ban"){
-								$this->getServer()->getPlayer($name)->setBanned(true);
+								if($action === "ban"){
+								$player->setBanned(true);
+								$sender->sendMessage(TextFormat::DARK_GREEN . "[LegoCraft] " . $player->getName() . " was banned.");
 								}
-								if($this->getConfig()->get("Action") === "Deop"){
-								$this->getServer()->getPlayer($name)->setOp(false);
-								$this->getServer()->getPlayer($name)->sendMessage(TextFormat::DARK_RED . "Admin Warning: " . $msg);
+								if($action === "deop"){
+								$player->setOp(false);
+								$player->sendMessage(TextFormat::DARK_RED . "[LegoCraft] Admin Warning: " . $msg);
+								$sender->sendMessage(TextFormat::DARK_GREEN . "[LegoCraft] " . $player->getName() . " was deoped.");
 								}
 								return true;
 							}elseif($this->getServer()->getPlayer($name)->isOnline()){
-		                    $this->getServer()->getPlayer($name)->sendMessage(TextFormat::DARK_RED . "Admin Warning: " . $msg);
+		                    $player->sendMessage(TextFormat::DARK_RED . "[LegoCraft] Admin Warning: " . $msg);
+							$sender->sendMessage(TextFormat::DARK_GREEN . "[LegoCraft] " . $player->getName() . " was warned.");
 							$this->warnedplayers->set($name);
 							return true;
 						}
@@ -61,6 +67,14 @@ class Main extends PluginBase implements Listener{
 					    if(isset($args[0])){
                             if($this->warnedplayers->exists($args[0])){
                                 $this->warnedplayers->remove($args[0]);
+								$player = $this->getServer()->getPlayer($args[0]);
+							    $action = strtolower($this->getConfig()->get("Action"));
+								if($action === "ban"){
+								$player->setBanned(false);
+								}
+								if($action === "deop"){
+								$player->setOp(true);
+								}
                                 $sender->sendMessage(TextFormat::BLUE . $args[0] . " has been forgiven.");
                             }else{
 						    $sender->sendMessage(TextFormat::RED . "Player has not been warned before.");
