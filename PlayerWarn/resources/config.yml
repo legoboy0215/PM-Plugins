@@ -1,1 +1,8 @@
-#Player Warn Config
+# PlayerWarn Config
+
+
+
+#Action to execute when player is warned twice:
+#Kick, Ban, Freeze or Deop
+#Freeze is WIP, which is not finished yet.
+Action: Ban 
