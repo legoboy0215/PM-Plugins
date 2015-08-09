@@ -16,7 +16,7 @@ class Main extends PluginBase implements Listener{
 	
 	public function goldenAppleEat(PlayerItemConsumeEvent $event){
 	    $player = $event->getPlayer();
-	    if($event->getItem()->getId() === Item::Apple){
+	    if($event->getItem()->getId() === Item::APPLE){
 		    $rand = mt_rand(1, 20);
 			if($rand > 5 && $rand < 10){
 				$effect = Effect::getEffect(10); //Effect ID
