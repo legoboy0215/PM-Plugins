@@ -1,6 +1,6 @@
 <?php 
 
-namespace LegoHG;
+namespace Legoboy\GoldenApple;
 
 use pocketmine\event\Listener;
 use pocketmine\item\Item;
