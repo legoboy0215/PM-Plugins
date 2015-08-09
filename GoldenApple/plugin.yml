@@ -1,0 +1,5 @@
+name: GoldenApple
+author: Legoboy
+version: 1.0.0
+api: [1.12.0]
+main: Legoboy\GoldenApple\Main
