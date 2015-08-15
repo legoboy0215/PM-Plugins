@@ -1,11 +1,10 @@
 <?php 
 
-namespace LegoHG;
+namespace Legoboy\GoldenApple;
 
 use pocketmine\event\Listener;
 use pocketmine\item\Item;
 use pocketmine\plugin\PluginBase;
-use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
 use pocketmine\event\player\PlayerItemConsumeEvent;
 
@@ -17,9 +16,9 @@ class Main extends PluginBase implements Listener{
 	
 	public function goldenAppleEat(PlayerItemConsumeEvent $event){
 	    $player = $event->getPlayer();
-	    if($event->getItem() === Item::Apple){
-		    $rand = mt_rand(1, 100);
-			if($rand > 10 && $rand < 15){
+	    if($event->getItem()->getId() === Item::APPLE){
+		    $rand = mt_rand(1, 20);
+			if($rand > 5 && $rand < 10){
 				$effect = Effect::getEffect(10); //Effect ID
 				$effect->setVisible(false); //Particles
 				$effect->setAmplifier(2);
